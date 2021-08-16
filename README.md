@@ -46,3 +46,4 @@ Links:
 - https://aliazam60.medium.com/implementing-rock-paper-scissors-in-solidity-989db92126af
 - https://medium.com/swlh/exploring-commit-reveal-schemes-on-ethereum-c4ff5a777db8
 - Universal Basic Income: https://www.proofofhumanity.id/
+- Exactly challenge: https://github.com/exactly-finance/challenge-jr
