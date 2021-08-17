@@ -74,8 +74,8 @@ contract RockPaperScissors {
                 uint rest = _bet - winnings[msg.sender];
                 uint allowance = iToken.allowance(msg.sender,address(this));
                 require(allowance >= rest,"The allowance is not enough for this bet. Please rise");
-                iToken.transferFrom(msg.sender,address(this),rest);
                 winnings[msg.sender] = 0;
+				iToken.transferFrom(msg.sender,address(this),rest);
             }
             
         }
@@ -109,8 +109,8 @@ contract RockPaperScissors {
                 uint rest = games[_opponent][msg.sender].bet - winnings[msg.sender];
                 uint allowance = iToken.allowance(msg.sender,address(this));
                 require(allowance >= rest,"The allowance is not enough for this bet. Please rise");
+				winnings[msg.sender] = 0;
                 iToken.transferFrom(msg.sender,address(this),rest);
-                winnings[msg.sender] = 0;
             }
             
         }
@@ -228,7 +228,7 @@ contract RockPaperScissors {
      function withdrawEarnings() public {
         require(winnings[msg.sender] > 0, "Your winnings are 0");
         winnings[msg.sender] = 0;
-        iToken.transfer(msg.sender,winnings[msg.sender]);
+		iToken.transfer(msg.sender,winnings[msg.sender]);
      }
      
      // Read-only function for help player 1 calculate the hash
