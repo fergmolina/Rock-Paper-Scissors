@@ -72,8 +72,8 @@ contract RockPaperScissors {
                 uint rest = _bet - winnings[msg.sender];
                 uint allowance = iToken.allowance(msg.sender,address(this));
                 require(allowance >= rest,"The allowance is not enough for this bet. Please rise");
-				winnings[msg.sender] = 0;
-				iToken.transferFrom(msg.sender,address(this),rest);
+                winnings[msg.sender] = 0;
+                iToken.transferFrom(msg.sender,address(this),rest);
             }
             
         }
@@ -107,8 +107,8 @@ contract RockPaperScissors {
                 uint rest = games[_opponent][msg.sender].bet - winnings[msg.sender];
                 uint allowance = iToken.allowance(msg.sender,address(this));
                 require(allowance >= rest,"The allowance is not enough for this bet. Please rise");
-				winnings[msg.sender] = 0;
-				iToken.transferFrom(msg.sender,address(this),rest);
+                winnings[msg.sender] = 0;
+                iToken.transferFrom(msg.sender,address(this),rest);
             }
             
         }
