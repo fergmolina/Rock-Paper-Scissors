@@ -4,7 +4,6 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contr
 
 contract RockPaperScissors {
     
-    address owner;
     IERC20 iToken;
     
     enum Choice {
@@ -47,8 +46,7 @@ contract RockPaperScissors {
     // This event will trigger when player 1 cancel the game before player 2 accepts it
     event CancelGame(address _player1, address _player2, Status _status);
     
-    constructor(address _token) payable {
-        owner = msg.sender;
+    constructor(address _token) {
         iToken = IERC20(_token); // ERC20 Token interface is created
     }
     
