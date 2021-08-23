@@ -137,8 +137,8 @@ contract RockPaperScissors {
         
         // Both player selected same choice
         if(games[msg.sender][_opponent].player2Choice == _selection) {
-            winnings[msg.sender] = games[msg.sender][_opponent].bet;
-            winnings[_opponent] = games[msg.sender][_opponent].bet;
+            winnings[msg.sender] += games[msg.sender][_opponent].bet;
+            winnings[_opponent] += games[msg.sender][_opponent].bet;
             resultGame = Result.Draw;
         }
         // Player 1 selected Rock
@@ -147,11 +147,11 @@ contract RockPaperScissors {
             
             if(games[msg.sender][_opponent].player2Choice == Choice.Paper) {
                 // player 2 wins
-                winnings[_opponent] = games[msg.sender][_opponent].bet * 2; 
+                winnings[_opponent] += games[msg.sender][_opponent].bet * 2; 
                 resultGame = Result.Player2;
             } else if (games[msg.sender][_opponent].player2Choice == Choice.Scissors) {
                 // player 1 wins 
-                winnings[msg.sender] = games[msg.sender][_opponent].bet * 2; 
+                winnings[msg.sender] += games[msg.sender][_opponent].bet * 2; 
                 resultGame = Result.Player1;
             }
             
@@ -162,11 +162,11 @@ contract RockPaperScissors {
             
             if(games[msg.sender][_opponent].player2Choice == Choice.Rock) {
                 // player 1 wins
-                winnings[msg.sender] = games[msg.sender][_opponent].bet * 2;  
+                winnings[msg.sender] += games[msg.sender][_opponent].bet * 2;  
                 resultGame = Result.Player1;
             } else if (games[msg.sender][_opponent].player2Choice == Choice.Scissors) {
                 // player 2 wins 
-                winnings[_opponent] = games[msg.sender][_opponent].bet * 2; 
+                winnings[_opponent] += games[msg.sender][_opponent].bet * 2; 
                 resultGame = Result.Player2;
             }
             
@@ -177,11 +177,11 @@ contract RockPaperScissors {
             
             if(games[msg.sender][_opponent].player2Choice == Choice.Rock) {
                 // player 2 wins
-                winnings[_opponent] = games[msg.sender][_opponent].bet * 2; 
+                winnings[_opponent] += games[msg.sender][_opponent].bet * 2; 
                 resultGame = Result.Player2;
             } else if (games[msg.sender][_opponent].player2Choice == Choice.Paper) {
                 // player 1 wins
-                winnings[msg.sender] = games[msg.sender][_opponent].bet * 2;  
+                winnings[msg.sender] += games[msg.sender][_opponent].bet * 2;  
                 resultGame = Result.Player1;
             }
             
@@ -203,7 +203,7 @@ contract RockPaperScissors {
         require(games[_opponent][msg.sender].limitTime < block.timestamp, "Limit timeline has not been reached");
         
         
-        winnings[msg.sender] = games[_opponent][msg.sender].bet * 2;
+        winnings[msg.sender] += games[_opponent][msg.sender].bet * 2;
         games[_opponent][msg.sender].status = Status.Finished;
         emit FinishGame(_opponent, msg.sender, Choice.None, games[msg.sender][_opponent].player2Choice, games[msg.sender][_opponent].bet, Result.Player2);
         
@@ -216,7 +216,7 @@ contract RockPaperScissors {
         require(games[msg.sender][_opponent].status == Status.Started, "The game is not in the correct status");
         
         
-        winnings[msg.sender] = games[msg.sender][_opponent].bet;
+        winnings[msg.sender] += games[msg.sender][_opponent].bet;
         games[msg.sender][_opponent].status = Status.Canceled;
         emit CancelGame(msg.sender, _opponent, Status.Canceled);
         
