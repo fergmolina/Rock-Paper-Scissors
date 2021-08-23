@@ -11,7 +11,7 @@ _Exactly_ team determine the following characteristics for this smart contract:
 - Reduce gas costs as much as possible. :heavy_check_mark:
 - Let players bet their previous winnings. :heavy_check_mark:
 - How can you entice players to play, knowing that they may have their funds stuck in the contract if they face an uncooperative player? :heavy_check_mark:
-- Include any tests using Hardhat. :x:
+- Include any tests using Hardhat. :heavy_check_mark:
 
 The green tick means that my implementation has the requested characteristic. On the other hand, the red cross means that this solution has not implemented these characteristics. 
 
@@ -44,7 +44,7 @@ Earnings will be deposited in the contract and players can use it totally or par
 It's also important to mention that all the transfer methods are implemented by the Checks-Effects-Interaction pattern: You interact with outside addresses last, no matter what. So, first you have to set your Variables to the state you want, as if someone could call back to the Smart Contract before you can execute the next line after .transfer(...).  
 
 ## :hammer: Tools
-For this project, I used **Visual Studio Code** for coding and **Remix** for testing and tuning.
+For this project, I used **Visual Studio Code**, **HardHat**, **Waffle**, **Chai** and **EthersJS**
 
 ## :link: Links
 - https://aliazam60.medium.com/implementing-rock-paper-scissors-in-solidity-989db92126af
