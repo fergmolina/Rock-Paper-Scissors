@@ -20,7 +20,7 @@ describe("RockPaperScissors tests", function () {
         expect(await dummyUBIToken.name()).to.equal("Universal Basic Income");
     });
 
-    it("Check balance of Player One", async function () {
+    it("Check allowance of Player One", async function () {
         selection = await rockPaperScissors.getHash(0, "test"); // Player One Selects Rock
         await expect(rockPaperScissors.connect(playerOne).startGame(10, false, playerTwo.address, selection)).to.be.revertedWith("The allowance is not enough for this bet. Please rise");
     });
